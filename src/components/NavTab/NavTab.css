@@ -1,8 +1,19 @@
-. {
-  
+.nav-tab__button {
+  width: 129px;
+  height: 36px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: opacity .1s ease-in;
 }
 
-@media screen and (max-width: ) {
-  . {
-  }
+.nav-tab__button:hover {
+  opacity: 0.6;
 }

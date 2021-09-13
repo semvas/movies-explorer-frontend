@@ -1,5 +1,18 @@
-import
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
 
-function
+import './Movies.css';
 
-export default
+function Movies() {
+  return (
+    <main className="movies">
+      <div className="movies__container">
+        <SearchForm />
+        <MoviesCardList />
+      </div>
+    </main>
+  );
+}
+
+export default Movies;

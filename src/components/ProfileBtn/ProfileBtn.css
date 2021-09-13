@@ -1,0 +1,33 @@
+.profile-btn{
+  width: 100px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 11px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  transition: all .3s;
+}
+
+.profile-btn__img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #F9F9F9;
+  margin-left: 7px;
+  background-image: url(../../images/user-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile-btn:hover {
+  background-color: #2BE080;
+  color: #fff;
+}
