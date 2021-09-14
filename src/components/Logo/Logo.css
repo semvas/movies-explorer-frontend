@@ -1,0 +1,11 @@
+  
+.logo{
+  display: inline-block;
+  height: 38px;
+  width: 38px;
+  transition: transform .1s ease-in;
+}
+
+.logo:hover{
+  transform: scale(1.1);
+}

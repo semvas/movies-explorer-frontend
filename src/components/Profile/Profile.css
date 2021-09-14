@@ -1,0 +1,119 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__title {
+  margin: 74px 0 123px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.profile__form {
+  min-width: 410px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile__form-label {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: left;
+  min-width: 410px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__form-label:first-of-type {
+  border-bottom: 1px solid #424242;
+  padding-bottom: 16px;
+  margin-bottom: 17px;
+}
+
+.profile__form-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: right;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile__submit-button {
+  margin: 220px 0 16px;
+  padding: 0;
+  align-self: center;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile__submit-button:hover {
+  opacity: .6;
+}
+
+.profile__exit-button {font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #EE3465;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile__exit-button:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 769px){
+  .profile__title {
+    margin: 236px 0 96px;
+  }
+
+  .profile__submit-button {
+    margin-top: 210px;
+  }
+  .profile__exit-button {
+    padding-bottom: 269px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .profile__form {
+    min-width: 260px;
+  }
+
+  .profile__form-label {
+    min-width: 260px;
+  }
+
+  .profile__title {
+    margin: 70px 0 80px;
+  }
+
+  .profile__submit-button {
+    margin-top: 379px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__exit-button {
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 40px;
+  }
+}

@@ -1,0 +1,133 @@
+.movies-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.movies-card__img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.movies-card__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 0;
+}
+
+.movies-card__title {
+  max-width: 250px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movies-card__duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 52px;
+  height: 18px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 10px;
+  color: #A0A0A0;
+  background-color: #F4F4F4;
+  border-radius: 3px;
+}
+
+.movies-card__save-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 72px;
+  height: 21px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  text-align: center;
+  background-color: #F9F9F9;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all .3s ease;
+}
+
+.movies-card__save-btn:hover {
+  background-color: #EE3465;
+  color: #fff;
+}
+
+.movies-card__save-btn_saved {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: #EE3465;
+  background-image: url(../../images/saved-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+.movies-card__delete-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 21px;
+  height: 21px;
+  border: none;
+  border-radius: 30px;
+  background-color: #F9F9F9;
+  background-image: url(../../images/cross-btn.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .3s ease;
+}
+
+.movies-card__delete-btn:hover {
+  background-color: #EE3465;
+}
+
+.movies-card_type_main .movies-card__save-btn_saved {
+  opacity: 1;
+}
+
+.movies-card_type_main:hover .movies-card__save-btn {
+  opacity: 1;
+}
+
+.movies-card_type_saved:hover .movies-card__delete-btn {
+  opacity: 1;
+}
+
+@media screen and (max-width: 800px) {
+  .movies-card__title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }
+  .movies-card__save-btn {
+      opacity: 1;
+  }
+  .movies-card__delete-btn {
+      opacity: 1;
+  }
+}
