@@ -18,8 +18,26 @@ function AboutMe() {
                 Я родился и живу в Алматы. После окончания курса, планирую и далее продолжать изучение аспектов веб-разработки и набираться опыта уже в живых проектах.
               </p>
               <ul className="person__links-list">
-                <li><a className="person__link" href="https://www.facebook.com" target="_blank">Facebook</a></li>
-                <li><a className="person__link" href="https://github.com/semvas" target="_blank">Github</a></li>
+                <li>
+                  <a
+                    className="person__link"
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="person__link"
+                    href="https://github.com/semvas"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Github
+                  </a>
+                </li>
               </ul>
             </div>
             <img src={photo} className="person__photo" alt="Фотография ученика" />

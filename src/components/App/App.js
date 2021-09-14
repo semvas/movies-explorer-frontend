@@ -14,6 +14,7 @@ import NotFound from '../NotFound/NotFound';
 import './App.css';
 
 function App() {
+  // eslint-disable-next-line 
   const [loggedIn, setLoggedIn] = useState(true);
 
   return (

@@ -7,4 +7,5 @@
 [Ссылка на макет](https://www.figma.com/file/6btd8i3d5v38WMB0OCrNSR/Diploma?node-id=932%3A3886)
 
 Публичный IP адрес: 193.32.219.218
-Домен: coolmovies.deftdev.nomoredomains.club
+
+ Домен: https://coolmovies.deftdev.nomoredomains.club
