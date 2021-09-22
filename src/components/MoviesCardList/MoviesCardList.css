@@ -41,6 +41,18 @@
   cursor: pointer;
 }
 
+.movies-card-list__not-found {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  padding-top: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  color: #5C5C5C;
+
+}
+
 @media screen and (max-width: 800px) {
   .movies-card-list__items {
     column-gap: 30px;
