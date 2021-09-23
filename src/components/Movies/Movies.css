@@ -23,7 +23,7 @@
   color: #5C5C5C;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 840px) {
   .movies__container {
     padding: 0 30px 80px;
   }

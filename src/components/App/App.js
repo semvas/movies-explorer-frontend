@@ -191,7 +191,14 @@ function App() {
     const results = searchMovies(keyword, allMovies);
     
     setSearchFiltered(results);
+    setDurationFiltered(filterShortMovies(results));
     localStorage.setItem('results', JSON.stringify(results));
+
+    setShortInLocal([]);
+
+    if (isShortMovies) {
+      setAllFilteredMovies(durationFiltered);
+    }
 
     setIsLoading(false);
   }
