@@ -15,38 +15,28 @@ function SavedMovies({
   handleCheckBox, 
   isShortMovies,
   isLoading,
-  isInitialMsg,
   setIsLoading,
-  setInitialMsg
 }) {
 
-  const[durationFiltered, setDurationFiltered] = useState([]);
-  const[searchFiltered, setSearchFiltered] = useState(savedMovies);
-  const[allFilteredMovies, setAllFilteredMovies] = useState(savedMovies);
+  const[durationSavedFiltered, setdurationSavedFiltered] = useState([]);
+  const[searchSavedFiltered, setSearchSavedFiltered] = useState(savedMovies);
+  const[allSaveFilteredMovies, setAllSaveFilteredMovies] = useState(savedMovies);
 
   useEffect(() => {
-    setDurationFiltered(filterShortMovies(savedMovies))
+    setdurationSavedFiltered(filterShortMovies(savedMovies))
   }, [isShortMovies]);
 
   useEffect(()=> {
-    if(isShortMovies && searchFiltered) {
-      setAllFilteredMovies(durationFiltered);
+    if (isShortMovies && searchSavedFiltered) {
+      setAllSaveFilteredMovies(durationSavedFiltered);
     } else {
-      setAllFilteredMovies(searchFiltered);
+      setAllSaveFilteredMovies(searchSavedFiltered);
     }
-  }, [isShortMovies, searchFiltered]);
-  
-  useEffect(() => {
-    if (savedMovies.length > 0) {
-      setInitialMsg(false);
-    } else {
-      setInitialMsg(true);
-    }
-  }, [isShortMovies, savedMovies]);
+  }, [isShortMovies, searchSavedFiltered]);
 
   useEffect(() => {
-    if (savedMovies.length < allFilteredMovies.length) {
-      setAllFilteredMovies(savedMovies);
+    if (savedMovies.length < allSaveFilteredMovies.length) {
+      setAllSaveFilteredMovies(savedMovies);
     } 
   }, [savedMovies]);
 
@@ -55,8 +45,8 @@ function SavedMovies({
   
     const results = searchMovies(keyword, savedMovies);
     
-    setAllFilteredMovies(results);
-    setSearchFiltered(results);
+    setAllSaveFilteredMovies(results);
+    setSearchSavedFiltered(results);
     
     setIsLoading(false);
   };
@@ -73,11 +63,11 @@ function SavedMovies({
           <Preloader />
         ) : (
           <>
-            {isInitialMsg ? (
+            {savedMovies.length === 0 ? (
               <p className="saved-movies__message">У вас пока нет сохраненных фильмов</p>
             ) : (
               <MoviesCardList
-                allMovies={allFilteredMovies}
+                allMovies={allSaveFilteredMovies}
                 savedMovies = {savedMovies}
                 deleteMovie={deleteMovie}
               />

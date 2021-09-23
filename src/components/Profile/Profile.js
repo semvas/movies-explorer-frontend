@@ -45,6 +45,7 @@ function Profile({ handleUpdateUser, handleSignOut, isEditError, isEditSuccess }
               className="profile__form-input"
               name="email"
               type="email"
+              pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
               value={email || ''}
               placeholder="E-mail"
               required

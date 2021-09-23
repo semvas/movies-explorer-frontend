@@ -21,6 +21,9 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
 
+import { searchMovies } from '../../utils/searchingFunc'; 
+import { filterShortMovies } from '../../utils/filterShortFunc';
+
 import './App.css';
 
 function App() {
@@ -34,11 +37,19 @@ function App() {
   const[isEditSuccess, setIsEditSuccess] = useState(false);
 
   const[isLoading, setIsLoading] = useState(false);
-  const[isInitialMsg, setInitialMsg] = useState(true);
 
   const[allMovies, setAllMovies] = useState([]);
   const[savedMovies, setSavedMovies] = useState([]);
+  const[durationFiltered, setDurationFiltered] = useState([]);
+  const[searchFiltered, setSearchFiltered] = useState([]);
+  const[allFilteredMovies, setAllFilteredMovies] = useState([]);
+  const[shortInLocal, setShortInLocal] = useState([]);
+
   const[isShortMovies, setIsShortMovies] = useState(false);
+
+  const moviesFromLocalStorage = JSON.parse(
+    localStorage.getItem('results')
+  );
 
   const history = useHistory();
   const location = useLocation();
@@ -81,11 +92,34 @@ function App() {
         if(savedMovies) {
           setSavedMovies(savedMovies);
         }
+        setAllFilteredMovies(moviesFromLocalStorage);
+        setShortInLocal(filterShortMovies(moviesFromLocalStorage));
       })
       .catch(err => console.log(err))
       .finally(() => setIsLoading(false));
     }
   }, [token]);
+
+  useEffect(()=> {
+    if (isShortMovies) {
+      if (searchFiltered.length === 0) {
+        setAllFilteredMovies(shortInLocal);
+      } else {
+      setAllFilteredMovies(durationFiltered);
+      console.log(shortInLocal);
+      }
+    } else {
+      if (searchFiltered.length === 0) {
+        setAllFilteredMovies(moviesFromLocalStorage);
+      } else {
+      setAllFilteredMovies(searchFiltered);
+      }
+    }
+  }, [isShortMovies, searchFiltered]);
+
+  useEffect(() => {
+    setDurationFiltered(filterShortMovies(searchFiltered));
+  }, [searchFiltered]);
 
   function handleRegister(name, email, password) {
     mainApi.register(name, email, password).then(res => {
@@ -151,6 +185,17 @@ function App() {
     }
   }
 
+  function handleSearchSubmit(keyword) {
+    setIsLoading(true);
+  
+    const results = searchMovies(keyword, allMovies);
+    
+    setSearchFiltered(results);
+    localStorage.setItem('results', JSON.stringify(results));
+
+    setIsLoading(false);
+  }
+
   function handleCheckBox() {
     setIsShortMovies(!isShortMovies);
   }
@@ -200,16 +245,15 @@ function App() {
                 path="/movies"
                 component={Movies}
                 loggedIn={loggedIn}
-                allMovies={allMovies}
+                allMovies={allFilteredMovies}
                 savedMovies={savedMovies}
                 createMovie={createMovie}
                 deleteMovie={deleteMovie}
                 handleCheckBox={handleCheckBox}
                 isShortMovies={isShortMovies}
                 isLoading={isLoading}
-                isInitialMsg={isInitialMsg}
                 setIsLoading={setIsLoading}
-                setInitialMsg={setInitialMsg}
+                handleSearchSubmit={handleSearchSubmit}
               />
               <ProtectedRoute
                 path="/saved-movies"
@@ -220,9 +264,7 @@ function App() {
                 handleCheckBox={handleCheckBox}
                 isShortMovies={isShortMovies}
                 isLoading={isLoading}
-                isInitialMsg={isInitialMsg}
                 setIsLoading={setIsLoading}
-                setInitialMsg={setInitialMsg}
               />
               <ProtectedRoute
                 path="/profile"
