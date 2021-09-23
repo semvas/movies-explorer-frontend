@@ -106,7 +106,6 @@ function App() {
         setAllFilteredMovies(shortInLocal);
       } else {
       setAllFilteredMovies(durationFiltered);
-      console.log(shortInLocal);
       }
     } else {
       if (searchFiltered.length === 0) {
@@ -148,6 +147,7 @@ function App() {
 
   function handleSignOut() {
     setLoggedIn(false);
+    setShortInLocal([]);
     localStorage.clear();
     history.push('/');
   }
