@@ -15,6 +15,10 @@ function MoviesCard({ movie, savedMovies, createMovie, deleteMovie }) {
   const location = useLocation();
   const isSavedPage = location.pathname === '/saved-movies';
 
+  useEffect(() => {
+    console.log(movie.trailer);
+  }, []);
+
   const handleSaveBtn = () => {
     if(!isSaved) {
       createMovie(movie);
@@ -60,7 +64,7 @@ function MoviesCard({ movie, savedMovies, createMovie, deleteMovie }) {
       )}
       <a
         className="movies-card__link"
-        href={movie.trailerLink}
+        href={movie.trailerLink || movie.trailer}
         target="_blank"
         rel="noreferrer"
       >
