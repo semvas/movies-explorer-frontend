@@ -1,72 +1,101 @@
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import './Form.css';
 
-function Form(props) {
+function Form({
+  formName,
+  btnTitle,
+  question,
+  linkTo,
+  linkText,
+  formData,
+  onSubmit,
+  isRegisteredError,
+  isAuthError
+}) {
+  const {values, handleChange, errors, isValid, onFocus} = formData;
+
   return (
-    <form className="form" name={props.formName}>
+    <form className="form" name={formName} noValidate onSubmit={onSubmit}>
+        <Route path="/signup">
+          <label className="form__label" htmlFor="name">
+            Имя
+          </label>
+          <input
+            type="text"
+            className={`form__input${errors.name ? ' form__input_type_error' : ''}`}
+            name="name"
+            placeholder="Ваше имя"
+            minLength="2"
+            maxLength="40"
+            id="name"
+            required
+            onChange={handleChange}
+            onFocus={onFocus}
+            value={values.name || ''}
+          />
+          <span className="form__input-error" id="name-error">
+            {errors.name}
+          </span>
+        </Route>
 
-      <label className={`form__label${props.formName === 'login' ? ' form__label_type_hidden' : ''}`} htmlFor="name">
-        Имя
-      </label>
-      <input
-        type="text"
-        className={`form__input${props.formName === 'login' ? ' form__input_type_hidden' : ''}`}
-        name="name"
-        placeholder="Ваше имя"
-        minLength="2"
-        maxLength="40"
-        id="name"
-        required
-      />
-      <span
-        className={`form__input-error${props.formName === 'login' ? ' form__input-error_type_hidden' : ''}`}
-        id="name-error"
-      >
-        Что-то пошло не так...
-      </span>
+        <label className="form__label" htmlFor="email">
+          E-mail
+        </label>
+        <input
+          type="email"
+          className={`form__input ${errors.email ? ' form__input_type_error' : ''}`}
+          name="email"
+          pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
+          placeholder="Ваш E-mail"
+          id="email"
+          required
+          onChange={handleChange}
+          onFocus={onFocus}
+          value={values.email || ''}
+        />
+        <span className="form__input-error" id="email-error">
+          {errors.email}
+        </span>
 
-      <label className="form__label" htmlFor="email">
-        E-mail
-      </label>
-      <input
-        type="email"
-        className="form__input"
-        name="email"
-        placeholder="Ваш E-mail"
-        id="email"
-        required
-      />
-      <span className="form__input-error" id="email-error">
-        Что-то пошло не так...
-      </span>
+        <label className="form__label" htmlFor="password">
+          Пароль
+        </label>
+        <input
+          type="password"
+          className={`form__input ${errors.password ? ' form__input_type_error' : ''}`}
+          name="password"
+          placeholder="Введите пароль"
+          id="password"
+          minLength="4"
+          required
+          onChange={handleChange}
+          onFocus={onFocus}
+          value={values.password || ''}
+        />
+        <span className="form__input-error" id="password-error">
+          {errors.password}
+        </span>
 
-      <label className="form__label" htmlFor="password">
-        Пароль
-      </label>
-      <input
-        type="password"
-        className="form__input form__input_type_error"
-        name="password"
-        placeholder="Введите пароль"
-        id="password"
-        required
-      />
-      <span className="form__input-error" id="password-error">
-        Что-то пошло не так...
-      </span>
+        <div className='form__input-container'>
+          {isRegisteredError && <p className='form__text-error'>При регистрации произошла ошибка</p>}
+          {isAuthError && <p className='form__text-error'>Во время авторизации произошла ошибка</p>}
 
-      <button
-        className={`form__btn ${props.formName === 'login' ? ' form__btn_type_padded' : ''}`} type="submit">
-        {props.btnTitle}
-      </button>
+          <button
+            className="form__btn"
+            type="submit"
+            disabled={!isValid}
+          >
+            {btnTitle}
+          </button>
 
-      <p className="form__question">
-        {props.question}{' '}
-        <Link to={props.linkTo} className="form__link">
-          {props.linkText}
-        </Link>
-      </p>
+          <p className="form__question">
+            {question}{' '}
+            <Link to={linkTo} className="form__link">
+              {linkText}
+            </Link>
+          </p>
+        </div>
     </form>
   );
 }

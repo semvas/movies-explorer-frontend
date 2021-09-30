@@ -15,7 +15,7 @@ function Header({ loggedIn }) {
         <div className="header__container">
           <Logo />
           {loggedIn ? (
-            <Navigation loggedIn={loggedIn} />
+            <Navigation main={Main} />
           ) : (
             <nav className="menu__noauth">
               <Link to="/signup" className="menu__link menu__register">Регистрация</Link>

@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import ProfileBtn from '../ProfileBtn/ProfileBtn';
 
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ main }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = () => setIsMenuOpen(!isMenuOpen);
@@ -15,13 +15,28 @@ function Navigation() {
       <button className={`menu__btn ${isMenuOpen ? 'menu__close-btn' : 'menu__burger-btn'} `} onClick={handleMenuClick} />
       <nav className={`menu__auth ${isMenuOpen ? 'menu__side' : ''}`}>
         <div className="menu__container">
-          <NavLink exact to="/" className="menu__film-link" activeClassName="menu__film-link_active" onClick={handleMenuClick}>
+          <NavLink
+            exact to="/"
+            className="menu__film-link"
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
             Главная
           </NavLink>
-          <NavLink to="/movies" className="menu__film-link" activeClassName="menu__film-link_active" onClick={handleMenuClick}>
+          <NavLink
+            to="/movies" 
+            className={`menu__film-link ${main ? 'menu__film-link_main' : ''}`}
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
             Фильмы
           </NavLink>
-          <NavLink to="/saved-movies" className="menu__film-link" activeClassName="menu__film-link_active" onClick={handleMenuClick}>
+          <NavLink
+            to="/saved-movies"
+            className={`menu__film-link ${main ? 'menu__film-link_main' : ''}`}
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
             Сохраненные фильмы
           </NavLink>
         </div>

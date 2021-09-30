@@ -2,10 +2,11 @@
 
 # movies-explorer-frontend
 
-Для проявления состояния хедера для неавторизованного пользователя нужно установить в App.js стейт loggedIn в значении false
+Ветка третьего этапа дипломного проекта:  Функциональность на «React» и JS
 
-[Ссылка на макет](https://www.figma.com/file/6btd8i3d5v38WMB0OCrNSR/Diploma?node-id=932%3A3886)
+## Ссылки:
+* **Домен:** https://coolmovies.deftdev.nomoredomains.club,
 
-Публичный IP адрес: 193.32.219.218
+* **Ссылка на бэкенд:** https://api.coolmovies.deftdev.nomoredomains.club,
 
- Домен: https://coolmovies.deftdev.nomoredomains.club
+* **Публичный IP:** 193.32.219.218
